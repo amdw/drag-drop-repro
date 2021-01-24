@@ -10,6 +10,8 @@ In the final card, the exact same array of `DisplayedWord`s is generated and sto
 
 I regard this as a bug in the Angular CDK, or at least as a surprising, counter-intuitive, undocumented limitation. Since a `cdkDropListDropped` function is being supplied to perform the actual reordering of the underlying data structure, I see no reason in principle why this shouldn't work.
 
+This was raised as the following issue in the `angular/components` project: https://github.com/angular/components/issues/21682
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1.
 
 ## Development server
