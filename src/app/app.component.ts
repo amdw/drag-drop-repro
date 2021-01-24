@@ -1,13 +1,18 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   words: string[] = ['alice', 'bob', 'charlotte'];
+  displayed: DisplayedWord[] = [];
+
+  ngOnInit(): void {
+    this.displayed = this.displayedWords();
+  }
 
   displayedWords(): DisplayedWord[] {
     let letters = 0;
@@ -21,6 +26,7 @@ export class AppComponent {
 
   dropWord(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.words, event.previousIndex, event.currentIndex);
+    this.displayed = this.displayedWords();
   }
 }
 
