@@ -32,15 +32,15 @@ export class AppComponent implements OnInit {
 
   displayedWords(): DisplayedWord[] {
     let letters = 0;
-    let result: DisplayedWord[] = [];
-    for (let word of this.words) {
+    const result: DisplayedWord[] = [];
+    for (const word of this.words) {
       letters += word.length;
-      result.push({word: word, lettersSoFar: letters});
+      result.push({word, lettersSoFar: letters});
     }
     return result;
   }
 
-  dropWord(event: CdkDragDrop<string[]>) {
+  dropWord(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.words, event.previousIndex, event.currentIndex);
     this.displayed = this.displayedWords();
   }
