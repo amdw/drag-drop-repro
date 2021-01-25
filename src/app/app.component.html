@@ -24,11 +24,11 @@
 
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Displayed words using member variable</mat-card-title>
+    <mat-card-title>Displayed words using pipe</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <mat-list cdkDropList (cdkDropListDropped)="dropWord($event)">
-      <mat-list-item *ngFor="let displayedWord of displayed" cdkDrag>{{displayedWord.word}} {{displayedWord.lettersSoFar}}</mat-list-item>
+      <mat-list-item *ngFor="let displayedWord of words | displayWords" cdkDrag>{{displayedWord.word}} {{displayedWord.lettersSoFar}}</mat-list-item>
     </mat-list>
   </mat-card-content>
 </mat-card>

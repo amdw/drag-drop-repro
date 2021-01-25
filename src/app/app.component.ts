@@ -24,10 +24,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   words: string[] = ['alice', 'bob', 'charlotte'];
-  displayed: DisplayedWord[] = [];
 
   ngOnInit(): void {
-    this.displayed = this.displayedWords();
   }
 
   displayedWords(): DisplayedWord[] {
@@ -41,12 +39,14 @@ export class AppComponent implements OnInit {
   }
 
   dropWord(event: CdkDragDrop<string[]>): void {
-    moveItemInArray(this.words, event.previousIndex, event.currentIndex);
-    this.displayed = this.displayedWords();
+    // Need to create a new words array to trigger pipe to recalculate
+    let newWords = [...this.words];
+    moveItemInArray(newWords, event.previousIndex, event.currentIndex);
+    this.words = newWords;
   }
 }
 
-interface DisplayedWord {
+export interface DisplayedWord {
   word: string;
   lettersSoFar: number;
 }
